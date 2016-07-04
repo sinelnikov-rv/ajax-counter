@@ -1,0 +1,14 @@
+{
+  "name": "ajax",
+  "version": "1.0.0",
+  "description": "ajax",
+  "main": "index.html",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "Roman Sinelnikov",
+  "license": "MIT",
+  "devDependencies": {
+    "express": "^4.13.4"
+  }
+}
