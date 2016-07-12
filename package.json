@@ -2,7 +2,7 @@
   "name": "ajax",
   "version": "1.0.0",
   "description": "ajax",
-  "main": "index.html",
+  "main": "react.html",
   "scripts": {
     "start": "node server.js"
   },
