@@ -1,3 +1,30 @@
+var Input = React.createClass({
+    render: function(){
+    return (
+<div>
+    <input
+        type='button'
+        className='minus'
+        value='-'
+        onClick={this.onBtnClickHandler}
+        />
+    <input
+        type='number'
+        className='arg'
+        value={this.state.arg}
+        onChange={this.onFieldChange}
+        placeholder='0'
+        ref='arg'
+        />
+    <input
+        type='button'
+        className='plus'
+        value='+'
+        onClick={this.onBtnClickHandler}
+        />
+    </div>
+)}
+});
 var Counter = React.createClass({
     getInitialState: function(){
         return {
@@ -28,37 +55,17 @@ var Counter = React.createClass({
     render: function() {
         var result = this.state.result;
         return (
-                <div>
-                    <input
-                        type='button'
-                        className='minus'
-                        value='-'
-                        onClick={this.onBtnClickHandler}
-                        />
-                    <input
-                        type='number'
-                        className='arg'
-                        value={this.state.arg}
-                        onChange={this.onFieldChange}
-                        placeholder='0'
-                        ref='arg'
-                   />
-               <input
-                   type='button'
-                   className='plus'
-                   value='+'
-               onClick={this.onBtnClickHandler}
-           />
-
-                <p><b>{result}</b></p>
-                    </div>
-        );
+        <div>
+            <p><b>{result}</b></p>
+        </div>
+        )
    }
 });
 var App = React.createClass({
     render: function() {
         return (
             <div className="app">
+                <Input />
                 <Counter />
             </div>
         );
