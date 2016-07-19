@@ -16,14 +16,14 @@ var Counter = React.createClass({
     },
     onBtnClickHandler: function(e) {
         if(e.target.className === "plus"){
-            this.setState({arg: +(ReactDOM.findDOMNode(this.refs.arg).value) + 1})
+            this.setState({arg: this.state.arg + 1})
         }
         else {
-            this.setState({arg: +(ReactDOM.findDOMNode(this.refs.arg).value) - 1})
+            this.setState({arg: this.state.arg - 1})
         }
     },
     onFieldChange: function() {
-    this.setState({arg: ReactDOM.findDOMNode(this.refs.arg).value})
+        this.setState({arg: ReactDOM.findDOMNode(this.refs.arg).value})
     },
     render: function() {
         var result = this.state.result;
