@@ -1,29 +1,29 @@
 var Input = React.createClass({
     render: function(){
-    return (
-<div>
-    <input
-        type='button'
-        className='minus'
-        value='-'
-        onClick={this.onBtnClickHandler}
-        />
-    <input
-        type='number'
-        className='arg'
-        value={this.state.arg}
-        onChange={this.onFieldChange}
-        placeholder='0'
-        ref='arg'
-        />
-    <input
-        type='button'
-        className='plus'
-        value='+'
-        onClick={this.onBtnClickHandler}
-        />
-    </div>
-)}
+        return (
+            <div>
+                <input
+                    type='button'
+                    className='minus'
+                    value='-'
+                    onClick={this.props.onThisBtnClickHandler}
+                    />
+                <input
+                    type='number'
+                    className='arg'
+                    value={this.props.valueOfArg}
+                    onChange={this.props.onThisFieldChange}
+                    placeholder='0'
+                    refs='arg'
+                    />
+                <input
+                    type='button'
+                    className='plus'
+                    value='+'
+                    onClick={this.props.onThisBtnClickHandler}
+                    />
+            </div>
+        )}
 });
 var Counter = React.createClass({
     getInitialState: function(){
@@ -43,35 +43,36 @@ var Counter = React.createClass({
     },
     onBtnClickHandler: function(e) {
         if(e.target.className === "plus"){
-            this.setState({arg: this.state.arg + 1})
+            this.setState({arg: +this.state.arg + 1})
         }
         else {
-            this.setState({arg: this.state.arg - 1})
+            this.setState({arg: +this.state.arg - 1})
         }
     },
-    onFieldChange: function() {
-        this.setState({arg: ReactDOM.findDOMNode(this.refs.arg).value})
+    onFieldChange: function(e) {
+        console.log(e.target.value);
+        this.setState({arg: e.target.value})
     },
     render: function() {
         var result = this.state.result;
         return (
-        <div>
-            <p><b>{result}</b></p>
-        </div>
-        )
-   }
+            <div>
+                <Input onThisBtnClickHandler={this.onBtnClickHandler} valueOfArg={this.state.arg} onThisFieldChange={this.onFieldChange}/>
+                <p><b>{result}</b></p>
+            </div>
+            )
+    }
 });
 var App = React.createClass({
     render: function() {
         return (
             <div className="app">
-                <Input />
                 <Counter />
             </div>
         );
     }
 });
 ReactDOM.render(
-<App />,
+    <App />,
     document.getElementById('root')
 );
